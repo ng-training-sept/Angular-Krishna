@@ -1,0 +1,47 @@
+
+<!-- <button (click)="CountLike()">Like</button>
+<p>Your count is:{{count}}</p>
+<button (click)="DecreaseCount()">Dislike</button> -->
+
+
+    <!-- <img mat-card-image [src]="imageUrl" alt="shiba">
+    <mat-card-content>
+      <p>I am {{'running'}} on port {{port}}</p>
+      <p [style.fontSize]="size">Server with Id {{server.id}} is {{server.status}}</p>
+     
+        
+        <input matInput [(ngModel)]="title">
+        <mat-label>Title</mat-label>
+    <input type="text" matInput #cardTitle>
+  </mat-form-field> 
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button [disabled]="isShareDisabled">SHARE</button>
+    </mat-card-actions>
+    <mat-card class="card">
+  <mat-card-title>{{title | uppercase | reverse}}</mat-card-title>
+    <mat-card-header>
+      <mat-card-title>{{title}}</mat-card-title>
+      <input matInput [(ngModel)]="title">
+        <mat-label>Title</mat-label>
+    <input type="text" matInput #cardTitle>
+      <button mat-raised-button color="primary" (click)="onAddCard(cardTitle.value)">Add Card</button>
+    </mat-card-header>
+    </mat-card>
+  </mat-card> -->
+
+
+  <div class="card-container">
+    <mat-card class="card" *ngFor="let cardTitle of titles">
+      <mat-card-header>
+        <mat-card-title>{{cardTitle | uppercase | slice:1:3 }}</mat-card-title>
+        <mat-card-subtitle>{{cardTitle | reverse}}</mat-card-subtitle>
+        <mat-card-subtitle>{{birthday | date:"MM/dd/yyyy"}}</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input type="text" matInput #inputTitle>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="onAddCard(inputTitle.value)">Add Card</button>
+  </div>
