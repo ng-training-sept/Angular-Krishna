@@ -4,15 +4,13 @@ import { Card } from 'src/app/components/card/card.model';
 import { CardComponent } from "../../components/card/card.component";
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environment';
-
+import { LOGGER } from 'src/app/Service/logger';
+import { Logger } from 'src/app/Service/logger';
 @Component({
   selector: 'app-grocery',
   standalone: true,
   imports: [CommonModule,
-  CardComponent],
-  providers: [
-    { provide: logger.LOGGER, useClass: NewLoggerService}
-  ],
+  CardComponent,HttpClientModule],
   templateUrl: './grocery.component.html',
   styleUrls: ['./grocery.component.scss']
 })

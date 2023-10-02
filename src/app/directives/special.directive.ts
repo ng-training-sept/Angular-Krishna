@@ -20,3 +20,4 @@ export class SpecialDirective {
     this.el.nativeElement.style.color = color;
   }
 }
+

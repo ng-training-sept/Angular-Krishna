@@ -1,20 +1,20 @@
-import { Injectable } from '@angular/core';
+// import { Injectable } from '@angular/core';
 
-@Injectable({providedIn: 'root'})
-export class AuthService {
+// @Injectable({providedIn: 'root'})
+// export class AuthService {
 
-  private isLoggedIn = false;
+//   private isLoggedIn = false;
 
-  isAuthenticated(): boolean {
-    return this.isLoggedIn;
-  }
+//   isAuthenticated(): boolean {
+//     return this.isLoggedIn;
+//   }
 
-  authenticate(): void {
-    this.isLoggedIn = true;
-  }
+//   authenticate(): void {
+//     this.isLoggedIn = true;
+//   }
 
-  whoAmI(): string {
-    return 'AuthService';
-  }
-}
+//   whoAmI(): string {
+//     return 'AuthService';
+//   }
+// }
 

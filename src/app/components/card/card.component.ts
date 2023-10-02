@@ -1,31 +1,50 @@
+// import { CommonModule } from "@angular/common";
+// import { HttpClientModule } from "@angular/common/http";
+// import { FormsModule } from "@angular/forms";
+// import { MatButtonModule } from "@angular/material/button";
+// import { MatCardModule } from "@angular/material/card";
+// import { MatDialogModule } from "@angular/material/dialog";
+// import { MatInputModule } from "@angular/material/input";
+// import { Component } from "@angular/core";
+// //import{SpecialDirective}from "src/app/directives/special.directive";
+// import { ReversePipe } from "src/app/pipes/reverse.pipe";
+// import { Card } from "./card.model";
+// import { Router } from "@angular/router";
+// import { inject } from "@angular/core";
+// import { Input } from "@angular/core";
+// import { EventEmitter } from "@angular/core";
+// import { ActivatedRoute } from "@angular/router";
+// import { ItemSaveUpdateComponent } from "../item-save-update/item-save-update.component";
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
-import { SpecialDirective } from '../../directives/special.directive';
+// import { SpecialDirective } from 'src/app/directives/special.directive';
+// import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ReversePipe } from '../../pipes/reverse.pipe';
+import { ReversePipe } from "../../pipes/reverse.pipe";
 import { Card } from './card.model';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MatDialog,MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { ItemSaveUpdateComponent } from '../item-save-update/item-save-update.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
 
-  
+
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [
-    CommonModule,
-    MatCardModule,
-    MatButtonModule,
-    FormsModule,
-    SpecialDirective,
-    MatInputModule,
-    ReversePipe,
-    MatDialogModule
-],
+  // imports: [CommonModule,MatCardModule,MatButtonModule,FormsModule,MatInputModule,MatDialogModule,HttpClientModule,ReversePipe],
+  imports:[CommonModule,
+  MatCardModule,
+  FormsModule,
+  MatInputModule,
+  MatDialogModule,
+  HttpClientModule,
+  MatButtonModule,
+  ReversePipe
+  ],
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
@@ -88,16 +107,15 @@ private readonly dialog = inject(MatDialog);
 
 @Input() cards: Card[] = [];
 
-// ['mypage', 'child'] /mypage/child
 goToItemDetails(data: Card): void {
-  // this.router.navigateByUrl(`/sports/card-item/${data.id}`, {state: {data}});
+  this.router.navigateByUrl(`/sports/card-item/${data.id}`, {state: {data}});
   this.router.navigate(['card-item', data.id], {state: {data}, relativeTo: this.route}).then();
 }
-// @Output() titleEvent$ = new EventEmitter<string>();
+@Output() titleEvent$ = new EventEmitter<string>();
 
-//   onAddCard(title: string): void {
-//     this.titleEvent$.emit(title);
-//   }
+  onAddCard(title: string): void {
+    this.titleEvent$.emit(title);
+  }
 
   openItemDialog(data: Card): void {
     const dialogRef = this.dialog.open(ItemSaveUpdateComponent, {
@@ -110,5 +128,5 @@ goToItemDetails(data: Card): void {
       }
     });
   }
-
+  
 }

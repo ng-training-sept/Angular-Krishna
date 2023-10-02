@@ -55,7 +55,7 @@ export class ItemSaveUpdateComponent implements OnInit {
   // }
   private readonly dialogRef = inject(MatDialogRef);
   private readonly dialogData = inject(MAT_DIALOG_DATA);
-  sports!: Card;
+  // sports!: Card;
   sportsStore = inject(SportsStore);
 itemForm!: FormGroup;
 ngOnInit(): void {
